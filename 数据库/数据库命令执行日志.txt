@@ -1,0 +1,52 @@
+USE shicheng;
+DROP TABLE IF EXISTS log;
+--日志表
+CREATE TABLE log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    operation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    operation VARCHAR(255) NOT NULL,
+    ip_address VARCHAR(45) NOT NULL,
+    user VARCHAR(255) NOT NULL
+);
+--用户表
+USE shicheng;
+CREATE TABLE user (
+    ID INT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    2fa_key VARCHAR(255),
+    PRIMARY KEY (ID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+--验证码表
+CREATE TABLE IF NOT EXISTS verification_code (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(255) NOT NULL,
+    code VARCHAR(255) NOT NULL,
+    ip_address VARCHAR(255),
+    used VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+--用户信息表
+use shicheng;
+CREATE TABLE users_data (
+    id INT AUTO_INCREMENT PRIMARY KEY COMMENT '用户ID，自增主键',           -- 用户ID
+    user_id VARCHAR(36) COMMENT '用户唯一标识（UUID或其他唯一值）', -- 用户唯一标识
+    age INT COMMENT '用户年龄，必填字段',                          -- 年龄
+    gender VARCHAR(10) COMMENT '用户性别，例如：男、女',            -- 性别
+    weight DECIMAL(5,2) COMMENT '用户体重（单位kg），保留两位小数',   -- 体重
+    height DECIMAL(5,2) COMMENT '用户身高（单位cm），保留两位小数',   -- 身高
+    health_status VARCHAR(50) COMMENT '用户的健康状况描述，例如：良好、一般',  -- 健康状况
+    diet_preference VARCHAR(50) COMMENT '用户的饮食偏好，例如：低碳水化合物' -- 饮食偏好
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='存储用户基本信息的表';
+--计划表
+use shicheng;
+CREATE TABLE plans (
+    plan_id INT AUTO_INCREMENT PRIMARY KEY,
+    plan_name VARCHAR(255) NOT NULL,
+    plan_description TEXT,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    user_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user(ID) ON DELETE CASCADE ON UPDATE CASCADE
+);
