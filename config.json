@@ -1,0 +1,28 @@
+{
+    "host": "0.0.0.0",
+    "port": 8000,
+    "workers": 1,
+    "jwt_key": "",
+    "SQL_config": {
+        "db_host": "",
+        "db_port": "",
+        "db_user": "",
+        "db_password": "",
+        "db_name": ""
+    },
+    "MAIL_config":{
+        "smtp_server": "",
+        "smtp_server_port": "",
+        "smtp_server_user": "",
+        "smtp_server_token": "",
+        "test_email": ""
+    },
+    "GLM": {
+        "api": "",
+        "model": ""
+    },
+    "deepseek": {
+        "key": "",
+        "model": ""
+    }
+}
