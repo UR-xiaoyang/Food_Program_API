@@ -55,6 +55,3 @@ async def preflight_handler(request: Request, rest_of_path: str):
 if __name__ == "__main__":
     # 启动 uvicorn，动态分配 workers 数量
     uvicorn.run("main:app", host=配置["host"], port=配置["port"], workers=配置["workers"])
-
-# 添加WSGI入口点用于PyInstaller
-app_instance = app

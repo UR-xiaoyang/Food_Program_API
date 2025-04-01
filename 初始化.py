@@ -17,13 +17,6 @@ def 加载配置():
     with open('config.json') as f:
         return json.load(f)
 
-
-async def 读取消息():
-    messages = [{"role": "user", "content": "我希望回答您好，我是GLM4大模型，很高兴是为你服务"}]
-    async for 回答 in chat(messages):
-        print(回答, end="")
-
-
 def 初始化():
     print(">启动SERVER")
     获取版本号()
@@ -65,13 +58,5 @@ def 初始化():
     except:
         print("SMTP测试失败")
         # exit()
-
-    # GLM通信
-    try:
-        print("===GLM===")
-        asyncio.run(读取消息())
-        print("\n")
-    except Exception as e:
-        print("GLM初始化失败：" + str(e))
     return 配置
 

@@ -7,7 +7,7 @@ from 用户.邮箱.smtp配置 import smtp配置
 def SMTP(收件人, 邮件内容, 邮件主题, IP):
     try:
         # 创建连接
-        smtp = smtplib.SMTP_SSL(smtp配置.SMTP服务器, smtp配置.SMTP端口)
+        smtp = smtplib.SMTP_SSL(smtp配置.SMTP服务器, int(smtp配置.SMTP端口))
 
         # 登录
         smtp.login(smtp配置.SMTP用户, smtp配置.SMTP_token)
